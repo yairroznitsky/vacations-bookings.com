@@ -8,15 +8,54 @@ import IntentBrowse from "@/components/landing/IntentBrowse";
 import LandingHero from "@/components/landing/LandingHero";
 import LandingPageMeta from "@/components/landing/LandingPageMeta";
 import RelatedHotels from "@/components/landing/RelatedHotels";
+import NearbyHotels from "@/components/sitelink/NearbyHotels";
 import type { SearchFormProps } from "@/components/SearchForm";
+import { fetchNearby, type NearbyData } from "@/lib/nearbyLocation";
 import type { LandingPageConfig } from "@/types/landingPage";
-import { useMemo } from "react";
+import { format } from "date-fns";
+import { useEffect, useMemo, useState } from "react";
 
 type LandingPageProps = {
   config: LandingPageConfig;
 };
 
 const LandingPage = ({ config }: LandingPageProps) => {
+  // Fetch nearby hotels using the current hotel's coordinates (hotel pages only)
+  const [nearbyData, setNearbyData] = useState<NearbyData | null>(null);
+  const hotelLat = config.hotel?.latitude;
+  const hotelLng = config.hotel?.longitude;
+
+  useEffect(() => {
+    if (!hotelLat || !hotelLng) return;
+    fetchNearby({ lat: hotelLat, lng: hotelLng })
+      .then((data) => setNearbyData(data))
+      .catch(() => { /* silently ignore — section simply won't render */ });
+  }, [hotelLat, hotelLng]);
+
+  // Derive check-in / check-out strings from the page's search defaults
+  const checkInStr = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + (config.searchDefaults.nightsOffsetDays ?? 1));
+    return format(d, "yyyy-MM-dd");
+  }, [config.searchDefaults.nightsOffsetDays]);
+
+  const checkOutStr = useMemo(() => {
+    const checkIn = new Date();
+    checkIn.setDate(checkIn.getDate() + (config.searchDefaults.nightsOffsetDays ?? 1));
+    const checkOut = new Date(checkIn);
+    checkOut.setDate(checkOut.getDate() + (config.searchDefaults.stayNights ?? 1));
+    return format(checkOut, "yyyy-MM-dd");
+  }, [config.searchDefaults.nightsOffsetDays, config.searchDefaults.stayNights]);
+
+  // Filter out the current hotel from nearby results
+  const nearbyHotels = useMemo(
+    () =>
+      nearbyData?.hotels.filter(
+        (h) => !config.hotel || h.externalId !== Number(config.hotel.id)
+      ) ?? [],
+    [nearbyData, config.hotel]
+  );
+
   const searchFormProps = useMemo((): Pick<
     SearchFormProps,
     "defaults" | "trackingContext"
@@ -63,6 +102,16 @@ const LandingPage = ({ config }: LandingPageProps) => {
       <LandingPageMeta config={config} />
       <LandingHero config={config} searchFormProps={searchFormProps} />
       <Benefits benefits={config.content.benefits} />
+      {config.hotel && nearbyHotels.length > 0 && (
+        <NearbyHotels
+          hotels={nearbyHotels}
+          nearestCity={nearbyData?.nearest}
+          checkIn={checkInStr}
+          checkOut={checkOutStr}
+          surface="hotel_landing_nearby"
+          geoSource="precise"
+        />
+      )}
       {showCityExtras && config.cityStats ? (
         <CityInventoryStrip
           cityName={config.city.name}
