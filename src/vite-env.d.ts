@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_SITE_SLUG?: string;
   readonly VITE_SITE_SHORT_NAME?: string;
   readonly VITE_SITE_DOMAIN?: string;
+  readonly VITE_SITE_TAGLINE?: string;
   readonly VITE_SITE_OPERATOR?: string;
   readonly VITE_TRACKING_BRAND?: string;
   readonly VITE_LANDING_ID_PREFIX?: string;

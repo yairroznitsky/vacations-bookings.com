@@ -1,9 +1,13 @@
-import { ShieldCheck, Tag, Globe2 } from "lucide-react";
-import heroImage from "@/assets/hero-hotel.jpg";
+import { Luggage, Globe2, ShieldCheck } from "lucide-react";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import SearchForm from "@/components/SearchForm";
 import TrendingDestinations from "@/components/TrendingDestinations";
+import {
+  DEFAULT_HERO_SIZES,
+  getDefaultHeroImage,
+  getDefaultHeroSrcSet,
+} from "@/lib/destinationImages";
 import { getDefaultHotelStayDateStrings } from "@/lib/kayakDestinationSearch";
 import { siteConfig } from "@/lib/siteConfig";
 import {
@@ -12,7 +16,7 @@ import {
   useLandingI18n,
 } from "@/i18n/landing";
 
-const featureIcons = [Tag, Globe2, ShieldCheck] as const;
+const featureIcons = [Luggage, Globe2, ShieldCheck] as const;
 
 const IndexContent = () => {
   const { t } = useLandingI18n();
@@ -25,10 +29,12 @@ const IndexContent = () => {
         {/* Clip only the background/animation, not the whole section, so dropdowns can overflow */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src={heroImage}
+            src={getDefaultHeroImage()}
+            srcSet={getDefaultHeroSrcSet()}
+            sizes={DEFAULT_HERO_SIZES}
             alt={t.heroImageAlt}
-            width={1920}
-            height={1280}
+            width={1600}
+            height={900}
             fetchPriority="high"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover motion-safe:animate-hero-ken"
@@ -37,7 +43,7 @@ const IndexContent = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/30" />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-[12%] bottom-[22%] bg-[radial-gradient(ellipse_at_center,hsl(215_45%_6%/0.42)_0%,transparent_68%)]"
+            className="pointer-events-none absolute inset-x-0 top-[12%] bottom-[22%] bg-[radial-gradient(ellipse_at_center,hsl(202_45%_6%/0.42)_0%,transparent_68%)]"
           />
         </div>
 
@@ -78,7 +84,7 @@ const IndexContent = () => {
                   key={f.title}
                   className="rounded-2xl border border-border bg-card p-7 shadow-soft"
                 >
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground">{f.title}</h3>
@@ -99,7 +105,7 @@ const IndexContent = () => {
       />
 
       {/* CTA strip */}
-      <section id="deals" className="relative overflow-hidden bg-primary py-16">
+      <section id="deals" className="relative overflow-hidden bg-gradient-primary py-16">
         <div className="container text-center">
           <h2 className="font-display text-4xl font-bold text-primary-foreground md:text-5xl">
             {t.ctaTitle}

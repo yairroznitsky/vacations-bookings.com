@@ -153,7 +153,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       source_app:
         readEnv("SITE_SLUG")?.trim() ||
         readEnv("VITE_SITE_SLUG")?.trim() ||
-        "cheap-stays",
+        "vacations-bookings",
     };
 
     const { error } = await insertRow(

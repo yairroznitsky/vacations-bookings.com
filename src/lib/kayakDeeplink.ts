@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/siteConfig";
+
 export interface KayakDeeplinkInput {
   query: string;
   destination_id: string;
@@ -46,17 +48,12 @@ export const resolveKayakRoomCount = (rooms: number, adults: number, children: n
   return Math.max(rooms, minimumRooms);
 };
 
-const DEFAULT_KAYAK_AFFILIATE_ID = "kan_317716_594040";
-
-const DEFAULT_KAYAK_AFFILIATE_CONFIG: KayakAffiliateConfig = {
-  affiliateId: import.meta.env.VITE_KAYAK_AFFILIATE_ID?.trim() || DEFAULT_KAYAK_AFFILIATE_ID,
+/** Affiliate ID is client-only via `siteConfig.kayakAffiliateId` / `VITE_KAYAK_AFFILIATE_ID`. */
+export const getKayakAffiliateConfig = (): KayakAffiliateConfig => ({
+  affiliateId: siteConfig.kayakAffiliateId,
   deeplinkBase:
     import.meta.env.VITE_KAYAK_DEEPLINK_BASE?.trim() ?? "https://www.kayak.com/in",
   utmMedium: import.meta.env.VITE_KAYAK_UTM_MEDIUM?.trim() ?? "affiliate",
-};
-
-export const getKayakAffiliateConfig = (): KayakAffiliateConfig => ({
-  ...DEFAULT_KAYAK_AFFILIATE_CONFIG,
 });
 
 /** Builds the inner `/hotels/...` path (without affiliate wrapper). */

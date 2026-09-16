@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildKayakDeeplink,
   buildKayakHotelPath,
+  getKayakAffiliateConfig,
   resolveKayakRoomCount,
   type KayakAffiliateConfig,
 } from "@/lib/kayakDeeplink";
@@ -30,6 +31,11 @@ const baseInput = {
 
 describe("buildKayakDeeplink", () => {
   const destination = { destination_id: "12345" };
+
+  it("includes the site default affiliate id from config", () => {
+    const url = buildKayakDeeplink(baseInput, destination, getKayakAffiliateConfig());
+    expect(new URL(url).searchParams.get("a")).toBe("kan_248654");
+  });
 
   it("wraps a US city search in the Kayak /in affiliate URL", () => {
     const url = buildKayakDeeplink(baseInput, destination, KAYAK_CONFIG);

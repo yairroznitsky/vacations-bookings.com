@@ -80,9 +80,8 @@ export default {
         search: "var(--shadow-search)",
       },
       fontFamily: {
-        display: ['"Plus Jakarta Sans"', "Inter", "system-ui", "sans-serif"],
-        brand: ['"Sora"', "Inter", "system-ui", "sans-serif"],
-        serif: ['"Playfair Display"', "Georgia", "serif"],
+        display: ['"Outfit"', "Inter", "system-ui", "sans-serif"],
+        brand: ['"Outfit"', "Inter", "system-ui", "sans-serif"],
         sans: ["Inter", "system-ui", "sans-serif"],
       },
       keyframes: {

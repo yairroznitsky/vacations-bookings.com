@@ -1,36 +1,36 @@
 import type { LandingTranslations } from "./types";
 
 export const en: LandingTranslations = {
-  heroEyebrow: "Independent stay search",
-  heroTitle: "A calmer way to compare stays",
+  heroEyebrow: "Hotels, resorts & rentals",
+  heroTitle: "Find your next vacation stay",
   heroSubtitle:
-    "Search hotels, apartments, and rentals in one place — then book through partners you trust.",
+    "Compare hotels, resorts, and rentals — then book through partners you trust.",
   heroImageAlt:
-    "Clifftop resort with infinity pool overlooking the ocean at sunset",
+    "Sunset over a sandy beach with a hotel resort in the background",
   featuresTitle: (siteName) => `Why travelers use ${siteName}`,
   featuresSubtitle:
-    "One search surfaces rates from trusted partners so you can choose with confidence.",
+    "One search, trusted partners, and a clear path from destination to booking.",
   features: [
     {
-      title: "Clear price comparison",
-      desc: "See hotels, apartments, and rentals side by side so you can pick the best option for your dates.",
+      title: "Plan your getaway",
+      desc: "Compare resorts, hotels, and rentals side by side so you can pick the stay that fits your trip.",
     },
     {
-      title: "Worldwide coverage",
-      desc: "Weekend escapes, beach breaks, or longer stays — options across cities and coastlines worldwide.",
+      title: "Beach to city",
+      desc: "Weekend escapes, beach breaks, or longer stays — options across coastlines and cities worldwide.",
     },
     {
-      title: "Established partners",
+      title: "Book with confidence",
       desc: "Flexible policies on many listings, backed by travel partners you already know.",
     },
   ],
-  destinationsTitle: "Popular destinations",
-  destinationsSubtitle: "Explore cities travelers are searching this week.",
-  compareRates: "Compare rates",
+  destinationsTitle: "Popular vacation spots",
+  destinationsSubtitle: "Beach towns, islands, and city getaways.",
+  compareRates: "Compare stays",
   checkingRates: "Checking rates…",
-  ctaTitle: "Ready to plan your trip?",
+  ctaTitle: "Start planning your getaway",
   ctaSubtitle:
-    "Use the search above to compare stays and continue to your preferred booking partner.",
+    "Search a destination to compare stays, then continue to a booking partner.",
   destinationNotFound: (city) =>
     `We couldn't find ${city}. Try searching manually above.`,
   reviewSearch: "Review your search",
@@ -74,8 +74,8 @@ export const en: LandingTranslations = {
     children: "Children",
     childrenSub: "Age 0–12",
     rooms: "Rooms",
-    comparePrices: "Compare prices",
-    comparingRates: "Comparing rates...",
+    comparePrices: "Compare stays",
+    comparingRates: "Comparing stays...",
     datesRequired: "Dates required",
     datesRequiredDesc:
       "Select both check-in and check-out to compare available stays.",

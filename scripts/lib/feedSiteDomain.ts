@@ -1,6 +1,6 @@
-/** Google Ads page feeds use www URLs (e.g. www.cheap-stays.com). */
+/** Google Ads page feeds use www URLs (e.g. www.vacations-bookings.com). */
 export const feedSiteDomain = (): string => {
-  const raw = process.env.VITE_SITE_DOMAIN?.trim() || "cheap-stays.com";
+  const raw = process.env.VITE_SITE_DOMAIN?.trim() || "vacations-bookings.com";
   if (/^localhost(:\d+)?$/i.test(raw) || /^127\.0\.0\.1/.test(raw)) {
     return raw;
   }

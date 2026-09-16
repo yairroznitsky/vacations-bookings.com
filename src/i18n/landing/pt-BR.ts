@@ -1,36 +1,36 @@
 import type { LandingTranslations } from "./types";
 
 export const ptBR: LandingTranslations = {
-  heroEyebrow: "Busca independente de hospedagem",
-  heroTitle: "Uma forma mais tranquila de comparar estadias",
+  heroEyebrow: "Hotéis, resorts e aluguéis",
+  heroTitle: "Encontre sua próxima estadia de férias",
   heroSubtitle:
-    "Pesquise hotéis, apartamentos e aluguéis em um só lugar — e reserve com parceiros de confiança.",
+    "Compare hotéis, resorts e aluguéis — e reserve com parceiros de confiança.",
   heroImageAlt:
-    "Resort no penhasco com piscina infinita com vista para o oceano ao pôr do sol",
+    "Pôr do sol sobre uma praia de areia com um hotel resort ao fundo",
   featuresTitle: (siteName) => `Por que viajantes usam ${siteName}`,
   featuresSubtitle:
-    "Uma busca mostra tarifas de parceiros confiáveis para você escolher com segurança.",
+    "Uma busca, parceiros confiáveis e um caminho claro do destino à reserva.",
   features: [
     {
-      title: "Comparação clara de preços",
-      desc: "Veja hotéis, apartamentos e aluguéis lado a lado e escolha a melhor opção para suas datas.",
+      title: "Planeje sua escapada",
+      desc: "Compare resorts, hotéis e aluguéis lado a lado e escolha a estadia ideal para sua viagem.",
     },
     {
-      title: "Cobertura mundial",
-      desc: "Fins de semana, praia ou estadias longas — opções em cidades e litorais do mundo todo.",
+      title: "Da praia à cidade",
+      desc: "Fins de semana, praia ou estadias longas — opções em litorais e cidades do mundo todo.",
     },
     {
-      title: "Parceiros consolidados",
+      title: "Reserve com confiança",
       desc: "Políticas flexíveis em muitas listagens, com parceiros de viagem que você já conhece.",
     },
   ],
-  destinationsTitle: "Destinos populares",
-  destinationsSubtitle: "Explore cidades que viajantes estão pesquisando esta semana.",
-  compareRates: "Comparar tarifas",
+  destinationsTitle: "Destinos de férias populares",
+  destinationsSubtitle: "Praias, ilhas e escapadas urbanas.",
+  compareRates: "Comparar estadias",
   checkingRates: "Consultando tarifas…",
-  ctaTitle: "Pronto para planejar sua viagem?",
+  ctaTitle: "Comece a planejar sua escapada",
   ctaSubtitle:
-    "Use a busca acima para comparar estadias e continuar com seu parceiro de reserva preferido.",
+    "Busque um destino para comparar estadias e seguir para um parceiro de reserva.",
   destinationNotFound: (city) =>
     `Não encontramos ${city}. Tente buscar manualmente acima.`,
   reviewSearch: "Revise sua busca",
@@ -74,8 +74,8 @@ export const ptBR: LandingTranslations = {
     children: "Crianças",
     childrenSub: "0–12 anos",
     rooms: "Quartos",
-    comparePrices: "Comparar preços",
-    comparingRates: "Comparando tarifas...",
+    comparePrices: "Comparar estadias",
+    comparingRates: "Comparando estadias...",
     datesRequired: "Datas obrigatórias",
     datesRequiredDesc:
       "Selecione check-in e check-out para comparar hospedagens disponíveis.",
@@ -102,6 +102,12 @@ export const ptBR: LandingTranslations = {
     },
   },
   countries: {
+    "United States": "Estados Unidos",
+    Greece: "Grécia",
+    Indonesia: "Indonésia",
+    Thailand: "Tailândia",
+    Mexico: "México",
+    "South Pacific": "Pacífico Sul",
     France: "França",
     "United Kingdom": "Reino Unido",
     Japan: "Japão",
@@ -109,6 +115,5 @@ export const ptBR: LandingTranslations = {
     Spain: "Espanha",
     "United Arab Emirates": "Emirados Árabes Unidos",
     Australia: "Austrália",
-    Thailand: "Tailândia",
   },
 };

@@ -53,7 +53,7 @@ const writeCookie = (value: string) => {
 export class LandingTrackingService {
   private static loggedLandingIds = new Set<string>();
 
-  /** Cheap-stays: CS- + 12 hex. Other brands (e.g. SB-): prefix + 10 alphanumeric. */
+  /** CS- prefix: CS- + 12 hex. Other brands (e.g. VB-, SB-): prefix + 10 alphanumeric. */
   static generateLandingId(): string {
     if (LANDING_ID_PREFIX === "CS-") {
       return `CS-${randomHex(6)}`;

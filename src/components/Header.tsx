@@ -7,8 +7,8 @@ const Header = () => {
         <BrandLogo
           variant="light"
           compact={false}
-          textClassName="text-[clamp(1.5rem,3.5vw,2.75rem)] md:text-[2.75rem]"
-          className="opacity-0 drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)] motion-safe:animate-hero-fade motion-reduce:opacity-100"
+          textClassName="text-[clamp(1.5rem,3.5vw,2.75rem)] md:text-[2.75rem] drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
+          className="opacity-0 motion-safe:animate-hero-fade motion-reduce:opacity-100"
         />
       </div>
     </header>

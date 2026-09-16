@@ -1,6 +1,15 @@
 import heroImage from "@/assets/hero-hotel.jpg";
 
 const CITY_HERO_BASE = "/images/city-heroes-optimized";
+const DEFAULT_HERO_BASE = "/images/hero-sunset-beach";
+
+/** Optimized homepage / sitelink hero (Unsplash, free license). */
+export const getDefaultHeroImage = (): string => `${DEFAULT_HERO_BASE}.webp`;
+
+export const getDefaultHeroSrcSet = (): string =>
+  `${DEFAULT_HERO_BASE}-960.webp 960w, ${DEFAULT_HERO_BASE}.webp 1600w`;
+
+export const DEFAULT_HERO_SIZES = "100vw";
 
 const normalizeCitySlug = (citySlug: string): string => citySlug.toLowerCase();
 

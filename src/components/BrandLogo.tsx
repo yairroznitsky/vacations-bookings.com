@@ -17,10 +17,12 @@ const BrandLogo = ({
   className,
   textClassName,
   iconClassName,
+  variant = "light",
   compact = false,
 }: BrandLogoProps) => {
   const wordmarkClass = cn(
-    "font-brand whitespace-nowrap text-[1.05em] font-extrabold leading-none tracking-[-0.02em] text-accent"
+    "font-brand whitespace-nowrap text-[1.05em] font-bold leading-none tracking-[-0.01em]",
+    variant === "light" ? "text-white" : "text-primary"
   );
 
   return (

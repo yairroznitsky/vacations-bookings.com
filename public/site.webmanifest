@@ -1,6 +1,6 @@
 {
-  "name": "Cheap Stays",
-  "short_name": "CheapStays",
+  "name": "Vacations Bookings",
+  "short_name": "VacationsBookings",
   "description": "Compare hotel and rental prices worldwide.",
   "icons": [
     {
@@ -22,7 +22,7 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#244A3D",
+  "theme_color": "#1A6B9A",
   "background_color": "#F9F7F4",
   "display": "standalone"
 }

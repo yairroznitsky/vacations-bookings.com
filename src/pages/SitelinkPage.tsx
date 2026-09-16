@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link, Navigate } from "react-router-dom";
-import heroImage from "@/assets/hero-hotel.jpg";
 import Header from "@/components/Header";
 import SearchForm from "@/components/SearchForm";
 import SiteFooter from "@/components/SiteFooter";
@@ -13,6 +12,11 @@ import SitelinkBreadcrumbs from "@/components/sitelink/SitelinkBreadcrumbs";
 import SitelinkJsonLd from "@/components/sitelink/SitelinkJsonLd";
 import NearbyHotels from "@/components/sitelink/NearbyHotels";
 import { LandingLocaleProvider } from "@/i18n/landing";
+import {
+  DEFAULT_HERO_SIZES,
+  getDefaultHeroImage,
+  getDefaultHeroSrcSet,
+} from "@/lib/destinationImages";
 import { getSitelinkBrowseLinks } from "@/lib/sitelinkBrowse";
 import {
   getSitelinkStayDateStrings,
@@ -175,10 +179,12 @@ const SitelinkPageContent = ({ slug }: SitelinkPageProps) => {
         {/* Clip background only — section stays overflow-visible for autocomplete on near-you */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src={heroImage}
+            src={getDefaultHeroImage()}
+            srcSet={getDefaultHeroSrcSet()}
+            sizes={DEFAULT_HERO_SIZES}
             alt={page.heroImageAlt}
-            width={1920}
-            height={1280}
+            width={1600}
+            height={900}
             fetchPriority="high"
             decoding="async"
             className="absolute inset-0 h-full min-h-full w-full min-w-full object-cover object-center motion-safe:animate-hero-ken"

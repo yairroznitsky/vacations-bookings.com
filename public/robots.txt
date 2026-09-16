@@ -46,4 +46,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://cheap-stays.com/sitemap.xml
+Sitemap: https://vacations-bookings.com/sitemap.xml

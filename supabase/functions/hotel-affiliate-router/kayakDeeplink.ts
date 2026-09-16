@@ -41,10 +41,8 @@ export const resolveAffiliateSource = (
   return "kayak";
 };
 
-const DEFAULT_KAYAK_AFFILIATE_ID = "kan_317716_594040";
-
 export const getKayakAffiliateConfig = (): KayakAffiliateConfig => ({
-  affiliateId: Deno.env.get("KAYAK_AFFILIATE_ID")?.trim() || DEFAULT_KAYAK_AFFILIATE_ID,
+  affiliateId: "",
   deeplinkBase: Deno.env.get("KAYAK_DEEPLINK_BASE") ?? "https://www.kayak.com/in",
   utmMedium: Deno.env.get("KAYAK_UTM_MEDIUM") ?? "affiliate",
 });

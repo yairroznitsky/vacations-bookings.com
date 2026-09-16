@@ -218,7 +218,7 @@ const TrendingDestinations = ({
   };
 
   return (
-    <section id="destinations" className="bg-secondary/40 py-20">
+    <section id="destinations" className="bg-accent/5 py-20">
       <div className="container">
         <div className="text-center">
           <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">

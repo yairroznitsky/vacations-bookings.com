@@ -106,7 +106,7 @@ const wikipediaTitleFor = (city: CityRow & { slug: string }): string =>
   WIKIPEDIA_TITLES[city.slug] ?? `${city.name}`;
 
 const WIKI_HEADERS = {
-  "Api-User-Agent": "CheapStays/1.0 (city-heroes; https://cheap-stays.com)",
+  "Api-User-Agent": "VacationsBookings/1.0 (city-heroes; https://vacations-bookings.com)",
   Accept: "application/json",
 };
 

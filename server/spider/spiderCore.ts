@@ -423,10 +423,8 @@ const fetchKayakSuggestions = async (
 
 // --- Kayak deeplink ---
 
-const DEFAULT_KAYAK_AFFILIATE_ID = "kan_317716_594040";
-
 const getKayakAffiliateConfig = () => ({
-  affiliateId: readEnv("KAYAK_AFFILIATE_ID")?.trim() || DEFAULT_KAYAK_AFFILIATE_ID,
+  affiliateId: "",
   deeplinkBase: readEnv("KAYAK_DEEPLINK_BASE") ?? "https://www.kayak.com/in",
   utmMedium: readEnv("KAYAK_UTM_MEDIUM") ?? "affiliate",
 });

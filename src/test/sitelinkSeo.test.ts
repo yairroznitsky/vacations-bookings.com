@@ -7,15 +7,15 @@ import {
   sitelinkPageUrl,
 } from "@/lib/sitelinkSeo";
 
-const ORIGIN = "https://www.cheap-stays.com";
+const ORIGIN = "https://www.vacations-bookings.com";
 
 describe("sitelinkSeo", () => {
   it("uses www on canonical origins", () => {
-    expect(canonicalOriginFromDomain("cheap-stays.com")).toBe(
-      "https://www.cheap-stays.com"
+    expect(canonicalOriginFromDomain("vacations-bookings.com")).toBe(
+      "https://www.vacations-bookings.com"
     );
-    expect(canonicalOriginFromDomain("www.cheap-stays.com")).toBe(
-      "https://www.cheap-stays.com"
+    expect(canonicalOriginFromDomain("www.vacations-bookings.com")).toBe(
+      "https://www.vacations-bookings.com"
     );
   });
 
