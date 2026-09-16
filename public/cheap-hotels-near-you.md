@@ -4,7 +4,7 @@ Find budget-friendly hotels near your location. We detect your city automaticall
 
 Canonical: https://www.vacations-bookings.com/cheap-hotels-near-you
 
-Cheap hotels near you uses your approximate location to surface budget-friendly stays close to where you are. We detect your city from your IP address on load — no permission prompt in the normal case. If IP lookup fails, your browser may ask once for location as a fallback. You can also search any city in the form above.
+Cheap hotels near you uses your approximate location to surface budget-friendly stays close to where you are. We detect your city from your IP address on load — no permission prompt. If IP lookup fails, your browser may ask once for location as a fallback. You can also search any city in the form above.
 
 ## How we find stays near you
 
