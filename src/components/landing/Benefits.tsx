@@ -1,7 +1,7 @@
-import { Tag, Globe2, ShieldCheck } from "lucide-react";
+import { Luggage, Globe2, ShieldCheck } from "lucide-react";
 import type { LandingPageBenefit } from "@/types/landingPage";
 
-const benefitIcons = [Tag, Globe2, ShieldCheck] as const;
+const benefitIcons = [Luggage, Globe2, ShieldCheck] as const;
 
 type BenefitsProps = {
   benefits: LandingPageBenefit[];
@@ -21,7 +21,7 @@ const Benefits = ({ benefits }: BenefitsProps) => {
                 key={benefit.title}
                 className="rounded-2xl border border-border bg-card p-7 shadow-soft"
               >
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-primary">
                   <Icon className="h-6 w-6" />
                 </div>
                 <h2 className="text-lg font-semibold text-foreground">{benefit.title}</h2>

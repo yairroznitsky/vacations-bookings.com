@@ -30,12 +30,11 @@ const SiteFooter = () => {
           </ul>
         </nav>
         <p>
-          © {new Date().getFullYear()} {siteConfig.operator || siteConfig.name}.{" "}
-          {t.footer.rightsReserved}
-          {siteConfig.operator
-            ? ` ${t.footer.operatedBy(siteConfig.name, siteConfig.operator)}`
-            : null}
+          © {new Date().getFullYear()} {siteConfig.name}. {t.footer.rightsReserved}
         </p>
+        {siteConfig.operator ? (
+          <p>{t.footer.operatedBy(siteConfig.name, siteConfig.operator)}</p>
+        ) : null}
         <p className="max-w-2xl">{t.footer.commission(siteConfig.name)}</p>
       </div>
     </footer>

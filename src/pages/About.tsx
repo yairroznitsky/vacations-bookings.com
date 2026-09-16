@@ -5,9 +5,9 @@ const About = () => {
   return (
     <SitePageLayout title={`About ${siteConfig.name}`}>
       <p>
-        {siteConfig.name} is an independent hotel and vacation rental search service. We help
-        travelers compare stays in one place, then continue to established booking partners to
-        complete their reservation.
+        {siteConfig.name} is an independent search for hotels, resorts, and vacation
+        rentals. We help travelers compare stays in one place, then continue to
+        established booking partners to complete the reservation.
       </p>
 
       <h2>What we do</h2>
@@ -20,7 +20,7 @@ const About = () => {
       <h2>Who operates this site</h2>
       <p>
         {siteConfig.name} is operated by {siteConfig.operator || siteConfig.name}. We build
-        search tools that make it easier to discover and compare accommodation options worldwide.
+        search tools that make it easier to find and compare vacation stays worldwide.
       </p>
 
       <h2>Affiliate disclosure</h2>
