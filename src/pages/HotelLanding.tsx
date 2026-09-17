@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, useLocation, useParams } from "react-router-dom";
 import LandingPage from "@/components/landing/LandingPage";
@@ -8,7 +7,6 @@ import {
   loadLandingPageConfig,
   normalizeLandingPath,
 } from "@/lib/landingPages";
-import { trackMetaPageView } from "@/lib/metaPixelTracking";
 import NotFound from "./NotFound";
 
 const HotelLanding = () => {
@@ -27,10 +25,6 @@ const HotelLanding = () => {
     staleTime: 60 * 60 * 1000,
     retry: 1,
   });
-
-  useEffect(() => {
-    if (data) trackMetaPageView();
-  }, [normalizedPath, data]);
 
   if (normalizedPath !== canonicalPath && citySlug) {
     return <Navigate to={`${canonicalPath}${location.search}`} replace />;

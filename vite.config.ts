@@ -8,6 +8,10 @@ import {
   localSpiderPlugin,
   localTrackingPlugin,
 } from "./server/edge/vitePlugin";
+import {
+  buildMetaPixelHeadHtml,
+  resolveMetaPixelId,
+} from "./src/lib/metaPixelHtml";
 
 const htmlEnvPlugin = (env: Record<string, string>): Plugin => ({
   name: "html-env-transform",
@@ -19,11 +23,21 @@ const htmlEnvPlugin = (env: Record<string, string>): Plugin => ({
       VITE_SITE_TAGLINE: env.VITE_SITE_TAGLINE || "Find your next vacation stay",
     };
 
-    return Object.entries(values).reduce(
-      (result, [key, value]) =>
-        result.replaceAll(`__${key}__`, value),
+    let result = Object.entries(values).reduce(
+      (output, [key, value]) => output.replaceAll(`__${key}__`, value),
       html
     );
+
+    const metaPixelId = resolveMetaPixelId(env);
+    const testEventCode = env.VITE_META_PIXEL_TEST_EVENT_CODE?.trim();
+    result = result.replace(
+      "__META_PIXEL_BLOCK__",
+      metaPixelId
+        ? buildMetaPixelHeadHtml(metaPixelId, testEventCode || undefined)
+        : ""
+    );
+
+    return result;
   },
 });
 

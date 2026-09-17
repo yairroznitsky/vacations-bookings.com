@@ -13,6 +13,7 @@ interface ImportMetaEnv {
   readonly VITE_TRACKING_BRAND?: string;
   readonly VITE_LANDING_ID_PREFIX?: string;
   readonly VITE_META_PIXEL_ID?: string;
+  readonly VITE_META_PIXEL_TEST_EVENT_CODE?: string;
   readonly VITE_TIKTOK_PIXEL_ID?: string;
   readonly VITE_GOOGLE_ADS_ID?: string;
   readonly VITE_GOOGLE_ADS_CONVERSION_LABEL?: string;

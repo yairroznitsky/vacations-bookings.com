@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useLandingTracker } from "@/hooks/useLandingTracker";
+import { useMetaPixelTracker } from "@/hooks/useMetaPixelTracker";
 import { SITELINK_SLUGS } from "./lib/sitelinkPages.ts";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
@@ -17,6 +18,7 @@ const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   useLandingTracker();
+  useMetaPixelTracker();
 
   return (
     <Routes>
