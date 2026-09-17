@@ -30,7 +30,7 @@ export const siteConfig = {
   supportEmail: readEnv(runtimeEnv.VITE_SITE_SUPPORT_EMAIL, "media@vacations-bookings.com"),
   trackingBrand: readEnv(runtimeEnv.VITE_TRACKING_BRAND, slug.replace(/-/g, "_")),
   landingIdPrefix: readEnv(runtimeEnv.VITE_LANDING_ID_PREFIX, "VB-"),
-  metaPixelId: readEnv(runtimeEnv.VITE_META_PIXEL_ID, ""),
+  metaPixelId: readEnv(runtimeEnv.VITE_META_PIXEL_ID, "1630910692162348"),
   tiktokPixelId: readEnv(runtimeEnv.VITE_TIKTOK_PIXEL_ID, ""),
   googleAdsId: readEnv(runtimeEnv.VITE_GOOGLE_ADS_ID, ""),
   googleAdsConversionLabel: readEnv(runtimeEnv.VITE_GOOGLE_ADS_CONVERSION_LABEL, ""),
