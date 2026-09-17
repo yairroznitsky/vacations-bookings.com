@@ -6,6 +6,20 @@ import type { HotelSearchInput } from "@/types/hotels";
 const inferTrafficType = (): "facebook" | "unknown" =>
   isFacebookAdsTraffic() ? "facebook" : "unknown";
 
+const canTrackMeta = (): boolean =>
+  Boolean(siteConfig.metaPixelId) && typeof window.fbq === "function";
+
+/** Fires Meta Pixel PageView once per call. */
+export const trackMetaPageView = (): void => {
+  if (!canTrackMeta()) return;
+
+  window.fbq!("track", "PageView");
+
+  if (import.meta.env.DEV) {
+    console.log("META PAGEVIEW FIRED", window.location.pathname);
+  }
+};
+
 export const buildMetaSearchParams = (
   search: HotelSearchInput
 ): Record<string, string | number> => {
@@ -35,8 +49,8 @@ export const trackMetaSearch = (search: HotelSearchInput): string => {
   const eventId = generateClickId();
   const params = buildMetaSearchParams(search);
 
-  if (typeof window.fbq === "function") {
-    window.fbq("track", "Search", params, { eventID: eventId });
+  if (canTrackMeta()) {
+    window.fbq!("track", "Search", params, { eventID: eventId });
   }
 
   if (import.meta.env.DEV) {
