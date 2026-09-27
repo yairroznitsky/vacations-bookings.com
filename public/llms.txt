@@ -7,6 +7,11 @@
 - [Home](https://www.vacations-bookings.com/): Hotel and stay search
 - [Español](https://www.vacations-bookings.com/es): Spanish home page
 - [Português (Brasil)](https://www.vacations-bookings.com/br): Brazilian Portuguese home page
+- [Français](https://www.vacations-bookings.com/fr): French home page
+- [Deutsch](https://www.vacations-bookings.com/de): German home page
+- [Italiano](https://www.vacations-bookings.com/it): Italian home page
+- [Nederlands](https://www.vacations-bookings.com/nl): Dutch home page
+- [Polski](https://www.vacations-bookings.com/pl): Polish home page
 - [About](https://www.vacations-bookings.com/about): About Vacations Bookings
 - [Contact](https://www.vacations-bookings.com/contact): Contact and support
 - [Privacy](https://www.vacations-bookings.com/privacy): Privacy policy

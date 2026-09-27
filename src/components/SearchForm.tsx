@@ -1,6 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { format, isBefore, isSameDay, startOfDay } from "date-fns";
-import { enUS, es as esLocale, ptBR as ptBRLocale, type Locale } from "date-fns/locale";
+import {
+  de as deLocale,
+  enUS,
+  es as esLocale,
+  fr as frLocale,
+  it as itLocale,
+  nl as nlLocale,
+  pl as plLocale,
+  ptBR as ptBRLocale,
+  type Locale,
+} from "date-fns/locale";
 import {
   CalendarIcon,
   MapPin,
@@ -39,7 +49,11 @@ import {
   isDestinationPickRequiredMessage,
   isSearchValidationMessage,
 } from "@/lib/hotelSearchErrors";
-import { translateValidationMessage, useLandingI18n } from "@/i18n/landing";
+import {
+  translateValidationMessage,
+  useLandingI18n,
+  type LandingLocale,
+} from "@/i18n/landing";
 import { resolveFirstDestinationSuggestion } from "@/lib/hotelSearchDestination";
 import {
   buildHotelSearchInputFromSuggestion,
@@ -212,10 +226,20 @@ const searchFieldValueRow = "mt-1 flex min-w-0 items-center justify-start gap-2 
 const searchFieldValueText =
   "min-w-0 flex-1 truncate whitespace-nowrap text-left text-base text-foreground";
 
+const DATE_FNS_LOCALES: Record<LandingLocale, Locale> = {
+  en: enUS,
+  es: esLocale,
+  "pt-BR": ptBRLocale,
+  fr: frLocale,
+  de: deLocale,
+  it: itLocale,
+  nl: nlLocale,
+  pl: plLocale,
+};
+
 const SearchForm = ({ defaults, trackingContext }: SearchFormProps = {}) => {
   const { locale: landingLocale, t } = useLandingI18n();
-  const dateLocale =
-    landingLocale === "es" ? esLocale : landingLocale === "pt-BR" ? ptBRLocale : enUS;
+  const dateLocale = DATE_FNS_LOCALES[landingLocale];
   const dateLabels = {
     checkIn: t.search.checkIn,
     checkOut: t.search.checkOut,

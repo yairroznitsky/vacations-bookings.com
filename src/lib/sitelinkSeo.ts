@@ -193,6 +193,11 @@ export const buildLlmsTxt = (origin: string): string => {
 - [Home](${origin}/): Hotel and stay search
 - [Español](${origin}/es): Spanish home page
 - [Português (Brasil)](${origin}/br): Brazilian Portuguese home page
+- [Français](${origin}/fr): French home page
+- [Deutsch](${origin}/de): German home page
+- [Italiano](${origin}/it): Italian home page
+- [Nederlands](${origin}/nl): Dutch home page
+- [Polski](${origin}/pl): Polish home page
 - [About](${origin}/about): About ${siteConfig.name}
 - [Contact](${origin}/contact): Contact and support
 - [Privacy](${origin}/privacy): Privacy policy

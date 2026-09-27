@@ -38,6 +38,11 @@ const STATIC_PATHS = [
   "/privacy",
   "/es",
   "/br",
+  "/fr",
+  "/de",
+  "/it",
+  "/nl",
+  "/pl",
   "/llms.txt",
   ...SITELINK_SLUGS.map((slug) => `/${slug}`),
 ];

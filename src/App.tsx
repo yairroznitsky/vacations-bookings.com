@@ -25,6 +25,11 @@ const AppRoutes = () => {
       <Route path="/" element={<Index />} />
       <Route path="/es" element={<Index locale="es" />} />
       <Route path="/br" element={<Index locale="pt-BR" />} />
+      <Route path="/fr" element={<Index locale="fr" />} />
+      <Route path="/de" element={<Index locale="de" />} />
+      <Route path="/it" element={<Index locale="it" />} />
+      <Route path="/nl" element={<Index locale="nl" />} />
+      <Route path="/pl" element={<Index locale="pl" />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/privacy" element={<Privacy />} />

@@ -1,4 +1,4 @@
-export type LandingLocale = "en" | "es" | "pt-BR";
+export type LandingLocale = "en" | "es" | "pt-BR" | "fr" | "de" | "it" | "nl" | "pl";
 
 export type LandingTranslations = {
   heroEyebrow: string;
