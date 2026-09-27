@@ -228,6 +228,8 @@ const normalizeKayakSuggestions = (payload: unknown): NormalizedSuggestion[] => 
         place_id: extractId(record, ["placeID", "indexId"]),
         airport_code: isAirport ? (record["apicode"] ?? record["ap"] ?? null) : null,
         airport_name: isAirport ? (record["airportname"] ?? record["name"] ?? null) : null,
+        entity_key: record["entityKey"] ?? null,
+        region: record["region"] ?? null,
       },
     });
 

@@ -70,6 +70,7 @@ import {
   trackPartnerExit,
 } from "@/lib/partnerClickTracking";
 import { getHotelAffiliateRouting, is2PopMode } from "@/lib/bookingMode";
+import { hotelSearchToBookingDeeplinkInput } from "@/lib/bookingHotels";
 import { buildShopnomixBookingUrl } from "@/lib/shopnomixRedirect";
 import { trackMetaSearch } from "@/lib/metaPixelTracking";
 import { trackTikTokSearch } from "@/lib/tiktokPixelTracking";
@@ -718,9 +719,11 @@ const SearchForm = ({ defaults, trackingContext }: SearchFormProps = {}) => {
         locale,
         marketCountry,
       });
+      search.destinationTypedQuery = trimmedDestination;
 
       const { latitude, longitude } = defaultCoordinatesRef.current;
       if (
+        !search.airportCode &&
         latitude != null &&
         longitude != null &&
         search.latitude == null &&
@@ -767,18 +770,7 @@ const SearchForm = ({ defaults, trackingContext }: SearchFormProps = {}) => {
         });
 
         const shopnomixUrl = buildShopnomixBookingUrl(
-          {
-            query: search.destination!.trim(),
-            checkin: search.checkIn!,
-            checkout: search.checkOut!,
-            rooms: search.rooms ?? 1,
-            adults: search.adults ?? 2,
-            children: search.children ?? 0,
-            children_ages: search.childrenAges ?? [],
-            click_id: cjClickId,
-            latitude: search.latitude,
-            longitude: search.longitude,
-          },
+          hotelSearchToBookingDeeplinkInput(search, cjClickId),
           "2pop"
         );
 
@@ -814,7 +806,7 @@ const SearchForm = ({ defaults, trackingContext }: SearchFormProps = {}) => {
           placement: "redirect",
           clickId: cjClickId,
           landingId,
-          iataCode: null,
+          iataCode: search.airportCode ?? null,
           locationId: search.destination,
           pickupDateNew: search.checkIn ?? null,
           dropoffDateNew: search.checkOut ?? null,

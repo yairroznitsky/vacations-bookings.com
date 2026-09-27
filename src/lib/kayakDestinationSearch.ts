@@ -129,6 +129,7 @@ export const buildHotelSearchInputFromSuggestion = (
 
   return {
     destination: suggestion.label.trim(),
+    bookingEntityKey: readRawString(suggestion.raw, "entity_key"),
     destinationId: readRawId(suggestion.raw, "city_id") ?? readRawId(suggestion.raw, "id") ?? suggestion.id,
     hotelId: readRawId(suggestion.raw, "hotel_id"),
     airportPlaceId: isAirport ? readRawId(suggestion.raw, "place_id") : undefined,
@@ -138,7 +139,8 @@ export const buildHotelSearchInputFromSuggestion = (
       readRawString(suggestion.raw, "city") ??
       readRawString(suggestion.raw, "cityonly") ??
       suggestion.label.split(",")[0]?.trim(),
-    stateName: readRawString(suggestion.raw, "state"),
+    stateName:
+      readRawString(suggestion.raw, "state") ?? readRawString(suggestion.raw, "region"),
     countryName,
     checkIn: params.checkIn,
     checkOut: params.checkOut,

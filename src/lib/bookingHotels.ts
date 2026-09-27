@@ -1,3 +1,13 @@
+import type { BookingAirportLocation } from "@/lib/bookingAirport";
+import {
+  buildBookingAirportSearchString,
+  buildBookingAirportSsne,
+  lookupBookingAirportDestId,
+  resolveBookingAirportDestId,
+} from "@/lib/bookingAirport";
+import { buildBookingCityQueryFromSearch } from "@/lib/bookingCityQuery";
+import type { HotelSearchInput } from "@/types/hotels";
+
 export interface BookingDeeplinkInput {
   query: string;
   checkin: string;
@@ -9,6 +19,7 @@ export interface BookingDeeplinkInput {
   click_id: string;
   latitude?: number;
   longitude?: number;
+  airport?: BookingAirportLocation;
 }
 
 export interface BookingAffiliateConfig {
@@ -72,8 +83,11 @@ export const buildBookingSearchResultsUrl = (
   const currency = options?.currency ?? BOOKING_CURRENCY;
   const lang = options?.lang ?? BOOKING_LANG;
 
+  const airport = input.airport;
+  const ss = airport ? buildBookingAirportSearchString(airport) : input.query.trim();
+
   const params = new URLSearchParams({
-    ss: input.query.trim(),
+    ss,
     checkin: input.checkin,
     checkout: input.checkout,
     group_adults: String(input.adults),
@@ -83,11 +97,27 @@ export const buildBookingSearchResultsUrl = (
     lang,
   });
 
+  if (airport) {
+    const ssne = buildBookingAirportSsne(airport);
+    params.set("ssne", ssne);
+    params.set("ssne_untouched", ssne);
+    params.set("sb", "1");
+    params.set("src_elem", "sb");
+    params.set("src", "searchresults");
+    params.set("search_selected", "true");
+    params.set("dest_type", "airport");
+    const destId = resolveBookingAirportDestId(airport);
+    if (destId) {
+      params.set("dest_id", destId);
+    }
+  }
+
   for (const age of input.children_ages) {
     params.append("age", String(age));
   }
 
   if (
+    !airport &&
     typeof input.latitude === "number" &&
     typeof input.longitude === "number" &&
     isValidCoordinate(input.latitude, -90, 90) &&
@@ -98,6 +128,49 @@ export const buildBookingSearchResultsUrl = (
   }
 
   return `https://www.booking.com/searchresults.html?${params.toString()}`;
+};
+
+export const hotelSearchToBookingDeeplinkInput = (
+  search: HotelSearchInput,
+  clickId: string
+): BookingDeeplinkInput => {
+  const airportCode = search.airportCode?.trim().toUpperCase();
+  const isIataAirport = Boolean(airportCode && /^[A-Z]{3}$/.test(airportCode));
+  const mappedDestId = isIataAirport ? lookupBookingAirportDestId(airportCode) : undefined;
+
+  const airport: BookingAirportLocation | undefined =
+    isIataAirport && mappedDestId
+      ? {
+          airportCode: airportCode!,
+          airportName: search.airportName,
+          cityName: search.cityName,
+          regionName: search.stateName,
+          countryName: search.countryName ?? search.country,
+          entityKey: search.bookingEntityKey,
+          typedQuery: search.destinationTypedQuery,
+        }
+      : undefined;
+
+  const query =
+    airport != null
+      ? (search.destination?.trim() ?? "")
+      : isIataAirport
+        ? buildBookingCityQueryFromSearch(search)
+        : (search.destination?.trim() ?? "");
+
+  return {
+    query,
+    checkin: search.checkIn!,
+    checkout: search.checkOut!,
+    rooms: search.rooms ?? 1,
+    adults: search.adults ?? 2,
+    children: search.children ?? 0,
+    children_ages: search.childrenAges ?? [],
+    click_id: clickId,
+    latitude: airport ? undefined : search.latitude,
+    longitude: airport ? undefined : search.longitude,
+    airport,
+  };
 };
 
 export const buildBookingAffiliateRedirectUrl = (

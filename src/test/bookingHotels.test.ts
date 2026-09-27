@@ -74,6 +74,7 @@ describe("buildBookingSearchResultsUrl", () => {
     expect(parsed.searchParams.get("ss")).toBe("Athens");
     expect(parsed.searchParams.has("latitude")).toBe(false);
     expect(parsed.searchParams.has("longitude")).toBe(false);
+    expect(parsed.searchParams.has("dest_type")).toBe(false);
   });
 
   it("repeats age params for each child", () => {

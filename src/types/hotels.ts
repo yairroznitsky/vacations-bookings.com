@@ -20,6 +20,9 @@ export interface HotelSearchInput {
   longitude?: number;
   locale?: string;
   country?: string;
+  /** Text in the destination field when the user submitted (before label overwrite). */
+  destinationTypedQuery?: string;
+  bookingEntityKey?: string;
 }
 
 export interface HotelRedirectRequest {
