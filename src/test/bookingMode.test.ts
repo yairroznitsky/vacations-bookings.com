@@ -6,7 +6,15 @@ describe("bookingMode", () => {
     window.history.replaceState({}, "", "/");
   });
 
-  it("defaults to Kayak affiliate routing", () => {
+  it("defaults to Booking affiliate routing", () => {
+    expect(getHotelAffiliateRouting()).toEqual({
+      affiliateSource: "booking",
+      partner: "booking-hotels",
+    });
+  });
+
+  it("routes to kayak when ?kayak=1", () => {
+    window.history.replaceState({}, "", "/?kayak=1");
     expect(getHotelAffiliateRouting()).toEqual({
       affiliateSource: "kayak",
       partner: "kayak-hotels",

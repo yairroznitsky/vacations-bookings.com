@@ -64,7 +64,7 @@ export interface HotelCompareParams {
 
 /**
  * Resolves a hotel by name via Kayak autocomplete, then redirects to the
- * booking partner (Kayak by default, unless ?booking=1 or ?skyscanner=1).
+ * booking partner (Booking by default, unless ?kayak=1 or ?skyscanner=1).
  *
  * Throws if the hotel cannot be resolved or the redirect fails. The caller
  * is responsible for toast error handling so that loading state can be managed

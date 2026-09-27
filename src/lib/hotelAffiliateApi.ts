@@ -200,7 +200,7 @@ const buildBookingRedirect = (
 export const requestHotelRedirectUrl = async (
   payload: HotelRedirectRequest
 ): Promise<HotelAffiliateRouteResponse> => {
-  const affiliateSource = payload.affiliateSource ?? "kayak";
+  const affiliateSource = payload.affiliateSource ?? "booking";
 
   if (affiliateSource === "booking") {
     return buildBookingRedirect(payload);
