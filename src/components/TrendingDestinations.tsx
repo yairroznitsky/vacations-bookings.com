@@ -10,7 +10,7 @@ import {
   isSearchValidationMessage,
 } from "@/lib/hotelSearchErrors";
 import { getHotelAffiliateRouting, is2PopMode } from "@/lib/bookingMode";
-import { buildCjBookingUrl } from "@/lib/cjBooking";
+import { buildShopnomixBookingUrl } from "@/lib/shopnomixRedirect";
 import {
   buildHotelSearchInputFromSuggestion,
   getDeviceKayakAutocompleteContext,
@@ -99,7 +99,7 @@ const TrendingDestinations = ({
       const trackingExtras = { surface, source_destination: d.title };
 
       if (twoPopWindow !== null) {
-        // 2pop flow: Kayak in new tab + CJ Booking.com in current tab.
+        // 2pop flow: Kayak in new tab + Shopnomix Booking.com in current tab.
         const kayakClickId = generateClickId();
         const cjClickId = generateClickId();
 
@@ -111,18 +111,21 @@ const TrendingDestinations = ({
           metadata: { ...trackingExtras, destination_id: search.destinationId ?? "", two_pop: "1" },
         });
 
-        const cjUrl = buildCjBookingUrl({
-          query: search.destination!.trim(),
-          checkin: search.checkIn!,
-          checkout: search.checkOut!,
-          rooms: search.rooms ?? 1,
-          adults: search.adults ?? 2,
-          children: search.children ?? 0,
-          children_ages: search.childrenAges ?? [],
-          click_id: cjClickId,
-          latitude: search.latitude,
-          longitude: search.longitude,
-        });
+        const shopnomixUrl = buildShopnomixBookingUrl(
+          {
+            query: search.destination!.trim(),
+            checkin: search.checkIn!,
+            checkout: search.checkOut!,
+            rooms: search.rooms ?? 1,
+            adults: search.adults ?? 2,
+            children: search.children ?? 0,
+            children_ages: search.childrenAges ?? [],
+            click_id: cjClickId,
+            latitude: search.latitude,
+            longitude: search.longitude,
+          },
+          "2pop"
+        );
 
         twoPopWindow.location.href = kayakResponse.redirectUrl;
         twoPopNavigated = true;
@@ -143,8 +146,8 @@ const TrendingDestinations = ({
         });
 
         await trackPartnerExit({
-          partner: "booking-hotels-cj",
-          redirectUrl: cjUrl,
+          partner: "booking-hotels-shopnomix",
+          redirectUrl: shopnomixUrl,
           placement: "redirect",
           clickId: cjClickId,
           landingId,
