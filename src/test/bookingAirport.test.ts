@@ -5,6 +5,17 @@ import {
 } from "@/lib/bookingAirport";
 import { buildBookingCityQueryFromSearch } from "@/lib/bookingCityQuery";
 import { buildBookingSearchResultsUrl, hotelSearchToBookingDeeplinkInput } from "@/lib/bookingHotels";
+import {
+  BOOKING_AIRPORT_DEST_IDS,
+  lookupBookingAirportDestId,
+} from "@/lib/bookingAirportDestIds";
+
+describe("BOOKING_AIRPORT_DEST_IDS", () => {
+  it("includes major hubs and a large static map", () => {
+    expect(lookupBookingAirportDestId("TLV")).toBe("113");
+    expect(Object.keys(BOOKING_AIRPORT_DEST_IDS).length).toBeGreaterThan(700);
+  });
+});
 
 describe("formatBookingAirportTitle", () => {
   it("derives a title from Kayak entityKey", () => {
